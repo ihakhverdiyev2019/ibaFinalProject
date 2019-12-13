@@ -3,9 +3,7 @@ package iba.Final.Project.ibaFinalProject.Controller;
 
 import iba.Final.Project.ibaFinalProject.Domain.Product;
 import iba.Final.Project.ibaFinalProject.Repository.ProductRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletRequest;
@@ -34,6 +32,11 @@ public class ProductController {
 
         return productRepository.findAll();
 
+    }
+
+    @RequestMapping( value = "/product/add", consumes = "application/json")
+    public void addProduct(@RequestBody Product product){
+        productRepository.save(product);
     }
 
 
